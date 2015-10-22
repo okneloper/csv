@@ -1,2 +1,102 @@
 # csv
-A convenient wrapper for PHP's csv functions.
+OOP wrapper for PHP's csv functions, with column mapping for easy code support.
+
+# Usage 
+Use a CSV file as a data source
+```php
+    $dataSource = new \Okneloper\Csv\Stream\FileStream($file);
+```
+Or alternatively use a string containing CSV data
+```php
+    $dataSource = new \Okneloper\Csv\Stream\StringStream("pos,animal,weight\n1,Blue whale,180 tonnes\n2,African Elephant,6350 kg\n3,Brown Bear,1 ton");
+```
+Create a reader using the data source
+```php
+    $csv = new \Okneloper\Csv\CsvReader($dataSource);
+```
+Read the data
+```php
+    while ($row = $csv->read()) {
+        print_r($row->toArray());
+    }
+```
+Mapped data can be accessed as array elements:
+```php
+echo $row['pos'];
+```
+or object properties: 
+```php
+echo $row->pos;
+```
+
+## Column mapping ##
+### Maping to header ###
+By default, the data is mapped to the header row.
+```php
+$csv = new \Okneloper\Csv\CsvReader($dataSource);
+```
+Ouputs
+```
+Array
+(
+    [pos] => 1
+    [animal] => Blue whale
+    [weight] => 180 tonnes
+)
+...
+```
+### Custom mapping ###
+If you get a new CSV to process every once in a regulraly and the column order or names may change, cusotm mapping helps
+ to deal with it:
+```php
+$csv = new \Okneloper\Csv\CsvReader($dataSource, true, ['Nr', 'Who', 'HowMuch']);
+```
+```
+Array
+(
+    [Nr] => 1
+    [Who] => Blue whale
+    [HowMuch] => 180 tonnes
+)
+...
+```
+
+### No header ###
+```php
+$csv = new \Okneloper\Csv\CsvReader($dataSource, false, ['Nr', 'Who', 'HowMuch']);
+```
+```
+Array
+(
+    [Nr] => pos
+    [Who] => animal
+    [HowMuch] => weight
+)
+Array
+(
+    [Nr] => 1
+    [Who] => Blue whale
+    [HowMuch] => 180 tonnes
+)
+...
+```
+
+### No header, no mapping ###
+```php
+$csv = new \Okneloper\Csv\CsvReader($dataSource, false, null);
+```
+```php
+Array
+(
+    [0] => pos
+    [1] => animal
+    [2] => weight
+)
+Array
+(
+    [0] => 1
+    [1] => Blue whale
+    [2] => 180 tonnes
+)
+...
+```

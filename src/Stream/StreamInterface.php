@@ -1,0 +1,16 @@
+<?php
+
+namespace Okneloper\Csv\Stream;
+
+/**
+ * Interface StreamInterface
+ * @package Okneloper\Csv\Stream
+ */
+interface StreamInterface
+{
+    /**
+     * Return next line of CSV data or false if there is no more data
+     * @return array
+     */
+    public function nextLine();
+}
