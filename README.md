@@ -1,5 +1,27 @@
 # csv
 OOP wrapper for PHP's csv functions, with column mapping for easy code support.
+# Easy to use and support the code using it
+Consider CSV data of the world's heaviest animals having position, animal and weight in 1 line as column headings.
+```php
+<?php
+use \Okneloper\Csv\Stream\FileStream;
+use \Okneloper\Csv\CsvReader;
+
+// read CSV data from a file
+$dataSource = new FileStream($file);
+
+// creata a reader
+$csv = new CsvReader($dataSource);
+
+// read rows one by one
+while ($row = $csv->read()) {
+    echo $row->position; // value for the row in column 0 with header 'position'
+    echo $row->animal;   // value for the row in column 1 with header 'animal'
+    echo $row->weight;   // value for the row in column 2 with header 'weight'
+    echo $row["weight"]; // also supports array syntax 
+}
+
+```
 
 # Usage 
 Use a CSV file as a data source
@@ -8,7 +30,7 @@ Use a CSV file as a data source
 ```
 Or alternatively use a string containing CSV data
 ```php
-    $dataSource = new \Okneloper\Csv\Stream\StringStream("pos,animal,weight\n1,Blue whale,180 tonnes\n2,African Elephant,6350 kg\n3,Brown Bear,1 ton");
+    $dataSource = new \Okneloper\Csv\Stream\StringStream("position,animal,weight\n1,Blue whale,180 tonnes\n2,African Elephant,6350 kg\n3,Brown Bear,1 ton");
 ```
 Create a reader using the data source
 ```php
@@ -22,11 +44,11 @@ Read the data
 ```
 Mapped data can be accessed as array elements:
 ```php
-echo $row['pos'];
+echo $row['position'];
 ```
 or object properties: 
 ```php
-echo $row->pos;
+echo $row->position;
 ```
 
 ## Column mapping ##
@@ -39,7 +61,7 @@ Ouputs
 ```
 Array
 (
-    [pos] => 1
+    [position] => 1
     [animal] => Blue whale
     [weight] => 180 tonnes
 )
@@ -68,7 +90,7 @@ $csv = new \Okneloper\Csv\CsvReader($dataSource, false, ['Nr', 'Who', 'HowMuch']
 ```
 Array
 (
-    [Nr] => pos
+    [Nr] => position
     [Who] => animal
     [HowMuch] => weight
 )
@@ -88,7 +110,7 @@ $csv = new \Okneloper\Csv\CsvReader($dataSource, false, null);
 ```php
 Array
 (
-    [0] => pos
+    [0] => position
     [1] => animal
     [2] => weight
 )
