@@ -10,7 +10,7 @@ interface StreamInterface
 {
     /**
      * Return next line of CSV data or false if there is no more data
-     * @return array
+     * @return array|null
      */
     public function nextLine();
 }

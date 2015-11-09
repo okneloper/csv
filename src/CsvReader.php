@@ -54,6 +54,9 @@ class CsvReader
         }
     }
 
+    /**
+     * @return null|CsvRow
+     */
     public function read()
     {
         $this->lineNr++;
@@ -61,7 +64,7 @@ class CsvReader
         $row = $this->stream->nextLine();
 
         if (!$row) {
-            return $row;
+            return null;
         }
 
         return new CsvRow($row, $this->lineNr, $this->map);
