@@ -40,6 +40,17 @@ class CsvRow implements \ArrayAccess
         return $this->data[$prop];
     }
 
+    /**
+     * Magic setter for the underlying array
+     *
+     * @param $prop
+     * @param $value
+     */
+    public function __set($prop, $value)
+    {
+        $this->data[$prop] = $value;
+    }
+
     public function __construct($data, $lineNr, $map = null)
     {
         $this->lineNr = $lineNr;
