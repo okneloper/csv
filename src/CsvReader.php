@@ -11,15 +11,29 @@ use Okneloper\Csv\Stream\StreamInterface;
  */
 class CsvReader
 {
+    /**
+     * Map to header setting
+     */
     const MAP_TO_HEADER = 1;
 
+    /**
+     * Current Line number on the Reader
+     * @var int
+     */
     protected $lineNr = 0;
 
     /**
+     * Source stream of CSV data
+     *
      * @var StreamInterface
      */
     protected $stream;
 
+    /**
+     * Property to numeric index map
+     *
+     * @var array
+     */
     protected $map;
 
     /**
@@ -29,6 +43,8 @@ class CsvReader
 
 
     /**
+     * Get current line number
+     *
      * @return int
      */
     public function getLineNr()
