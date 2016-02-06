@@ -85,4 +85,12 @@ class CsvReader
 
         return new CsvRow($row, $this->lineNr, $this->map);
     }
+
+    /**
+     * Rewind the underlying stream
+     */
+    public function rewind()
+    {
+        $this->stream->rewind();
+    }
 }

@@ -13,4 +13,11 @@ interface StreamInterface
      * @return array|null
      */
     public function nextLine();
+
+    /**
+     * Rewind the stream
+     *
+     * @return void
+     */
+    public function rewind();
 }

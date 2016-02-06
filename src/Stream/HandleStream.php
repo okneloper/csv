@@ -51,4 +51,9 @@ abstract class HandleStream implements StreamInterface
         }
         return $row;
     }
+
+    public function rewind()
+    {
+        rewind($this->handle);
+    }
 }
