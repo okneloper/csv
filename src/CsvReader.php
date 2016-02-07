@@ -92,5 +92,10 @@ class CsvReader
     public function rewind()
     {
         $this->stream->rewind();
+
+        // read one line as we do in the constructor
+        if ($this->header) {
+            $this->header = $this->read();
+        }
     }
 }
