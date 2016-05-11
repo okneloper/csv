@@ -65,6 +65,16 @@ class CsvRow implements \ArrayAccess
         }
     }
 
+    public function isEmpty()
+    {
+        foreach ($this->data as $value) {
+            if (trim($value) !== '') {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Return an array presentation fo the row
      * @return array
