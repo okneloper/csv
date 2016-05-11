@@ -60,7 +60,7 @@ class CsvRow implements \ArrayAccess
         } else {
             $this->data = [];
             foreach ($map as $key => $assoc) {
-                $this->data[ $assoc ] = $data[$key];
+                $this->data[$assoc] = isset($data[$key]) ? $data[$key] : null;
             }
         }
     }
