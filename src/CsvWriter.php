@@ -34,6 +34,11 @@ class CsvWriter
 
     public function open()
     {
+        // open the file just once
+        if ($this->handle) {
+          return;
+        }
+
         $this->handle = fopen($this->filepath, 'w');
 
         if (!$this->handle) {
