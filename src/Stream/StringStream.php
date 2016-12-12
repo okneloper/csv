@@ -10,7 +10,7 @@ namespace Okneloper\Csv\Stream;
 class StringStream extends HandleStream
 {
     /**
-     * @param $csvString String contaning CSV data
+     * @param $csvString String containing CSV data
      */
     public function __construct($csvString)
     {

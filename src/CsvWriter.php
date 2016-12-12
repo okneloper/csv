@@ -1,13 +1,10 @@
 <?php
 
-namespace Mtc\Csv;
-
-use Okneloper\Csv\CsvRow;
+namespace Okneloper\Csv;
 
 /**
  * Class CsvWriter
- * @package Mtc\Csv
- * @author Aleksey Lavrinenko
+ * @package Okneloper\Csv
  */
 class CsvWriter
 {

@@ -52,12 +52,12 @@ echo $row->position;
 ```
 
 ## Column mapping ##
-### Maping to header ###
+### Mapping to header ###
 By default, the data is mapped to the header row.
 ```php
 $csv = new \Okneloper\Csv\CsvReader($dataSource);
 ```
-Ouputs
+Outputs
 ```
 Array
 (
@@ -68,7 +68,7 @@ Array
 ...
 ```
 ### Custom mapping ###
-If you get a new CSV to process every once in a regulraly and the column order or names may change, cusotm mapping helps
+If you get a new CSV to process every once in a regularly and the column order or names may change, custom mapping helps
  to deal with it:
 ```php
 $csv = new \Okneloper\Csv\CsvReader($dataSource, true, ['Nr', 'Who', 'HowMuch']);
