@@ -1,6 +1,6 @@
 <?php
 
-namespace Okneloper\Csv\Stream;
+namespace Okneloper\Csv\Stream\Input;
 
 /**
  * Class FileStream. Uses a file as source for CSV data.

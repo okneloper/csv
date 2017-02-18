@@ -1,12 +1,14 @@
 <?php
 
-namespace Okneloper\Csv\Stream;
+namespace Okneloper\Csv\Stream\Input;
+
+use Okneloper\Csv\CsvRow;
 
 /**
- * Interface StreamInterface
+ * Interface Stream
  * @package Okneloper\Csv\Stream
  */
-interface StreamInterface
+interface InputStream
 {
     /**
      * Return next line of CSV data or false if there is no more data

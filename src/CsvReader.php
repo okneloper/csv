@@ -2,7 +2,7 @@
 
 namespace Okneloper\Csv;
 
-use Okneloper\Csv\Stream\StreamInterface;
+use Okneloper\Csv\Stream\Input\InputStream;
 
 /**
  * Class CsvReader. Reads CSV data from provided stream into a CsvRow
@@ -25,7 +25,7 @@ class CsvReader
     /**
      * Source stream of CSV data
      *
-     * @var StreamInterface
+     * @var InputStream
      */
     protected $stream;
 
@@ -52,7 +52,7 @@ class CsvReader
         return $this->lineNr;
     }
 
-    public function __construct(StreamInterface $stream, $hasHeader = true, $map = self::MAP_TO_HEADER)
+    public function __construct(InputStream $stream, $hasHeader = true, $map = self::MAP_TO_HEADER)
     {
         $this->stream = $stream;
 

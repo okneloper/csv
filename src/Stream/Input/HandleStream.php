@@ -1,6 +1,6 @@
 <?php
 
-namespace Okneloper\Csv\Stream;
+namespace Okneloper\Csv\Stream\Input;
 
 /**
  * Class HandleStream. Reads CSV data from a php file handle using fgetcsv
@@ -8,7 +8,7 @@ namespace Okneloper\Csv\Stream;
  * @package Okneloper\Csv\Stream
  * @author Aleksey Lavrinenko
  */
-abstract class HandleStream implements StreamInterface
+abstract class HandleStream implements InputStream
 {
     /**
      * Set PHP ini value auto_detect_line_endings

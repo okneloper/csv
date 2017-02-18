@@ -1,6 +1,6 @@
 <?php
 
-namespace Okneloper\Csv\Stream;
+namespace Okneloper\Csv\Stream\Input;
 
 /**
  * Class StringStream. Uses a string as source for CSV data
