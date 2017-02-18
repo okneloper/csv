@@ -2,6 +2,8 @@
 
 namespace Okneloper\Csv;
 
+use Okneloper\Csv\Stream\Output\OutputStream;
+
 /**
  * Class CsvWriter
  * @package Okneloper\Csv
@@ -10,7 +12,12 @@ class CsvWriter
 {
     protected $filepath;
     protected $is_temp = false;
-    protected $handle;
+
+    /**
+     * Output stream
+     * @var OutputStream
+     */
+    protected $stream;
 
     /**
      * @return null|string
@@ -20,30 +27,9 @@ class CsvWriter
         return $this->filepath;
     }
 
-    public function __construct($filepath = null)
+    public function __construct(OutputStream $stream)
     {
-        if (!$filepath) {
-            $filepath = tempnam('/tmp', 'csv_writer_');
-            $this->is_temp = true;
-        }
-
-        $this->filepath = $filepath;
-
-        $this->open();
-    }
-
-    public function open()
-    {
-        // open the file just once
-        if ($this->handle) {
-          return;
-        }
-
-        $this->handle = fopen($this->filepath, 'w');
-
-        if (!$this->handle) {
-            throw new \Exception("Unable to open file {$this->filepath} for writing");
-        }
+        $this->stream = $stream;
     }
 
     /**
@@ -51,21 +37,21 @@ class CsvWriter
      */
     public function write($row)
     {
-        if ($row instanceof CsvRow) {
-            $row = array_values($row->toArray());
+        if (!($row instanceof CsvRow)) {
+            $row = new CsvRow($row, $this->stream->rowsWritten() + 1);
         }
-        fputcsv($this->handle, $row);
+        $this->stream->writeRow($row);
     }
 
     public function done()
     {
-        fclose($this->handle);
+        $this->stream->close();
     }
 
+    /*
     public function __destruct()
     {
-        if ($this->is_temp && file_exists($this->filepath)) {
-            unlink($this->filepath);
-        }
+        $this->done();
     }
+    */
 }
