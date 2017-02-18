@@ -4,7 +4,7 @@ OOP wrapper for PHP's csv functions, with column mapping for easy code support.
 Consider CSV data of the world's heaviest animals having position, animal and weight in 1 line as column headings.
 ```php
 <?php
-use \Okneloper\Csv\Stream\FileStream;
+use \Okneloper\Csv\Stream\Input\FileStream;
 use \Okneloper\Csv\CsvReader;
 
 // read CSV data from a file
@@ -26,7 +26,7 @@ while ($row = $csv->read()) {
 # Usage 
 Use a CSV file as a data source
 ```php
-    $dataSource = new \Okneloper\Csv\Stream\FileStream($file);
+    $dataSource = new \Okneloper\Csv\Stream\Input\FileStream($file);
 ```
 Or alternatively use a string containing CSV data
 ```php
