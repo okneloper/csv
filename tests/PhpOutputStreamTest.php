@@ -13,8 +13,8 @@ class PhpOutputStreamTest extends WritingTest
         $data = $this->dataAsArray;
 
         ob_start();
-        $stream->write(new \Okneloper\Csv\CsvRow($data[0], 1));
-        $stream->write(new \Okneloper\Csv\CsvRow($data[1], 2));
+        $stream->writeRow(new \Okneloper\Csv\CsvRow($data[0], 1));
+        $stream->writeRow(new \Okneloper\Csv\CsvRow($data[1], 2));
         $output = ob_get_clean();
 
         $this->assertEquals($this->dataAsString, $output);

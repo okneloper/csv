@@ -28,7 +28,7 @@ class FileStreamTest extends WritingTest
 
         $stream = new FileStream($file);
 
-        $stream->write(new \Okneloper\Csv\CsvRow(['x'], 1));
+        $stream->writeRow(new \Okneloper\Csv\CsvRow(['x'], 1));
 
         // if there are no errors/exceptions test passed
     }
@@ -40,7 +40,7 @@ class FileStreamTest extends WritingTest
         $stream = new FileStream($file);
         $stream->open();
 
-        $stream->write(new \Okneloper\Csv\CsvRow(['x'], 1));
+        $stream->writeRow(new \Okneloper\Csv\CsvRow(['x'], 1));
 
         // if there are no errors/exceptions test passed
     }
@@ -67,8 +67,8 @@ class FileStreamTest extends WritingTest
 
         $data = $this->dataAsArray;
 
-        $stream->write(new \Okneloper\Csv\CsvRow($data[0], 1));
-        $stream->write(new \Okneloper\Csv\CsvRow($data[1], 2));
+        $stream->writeRow(new \Okneloper\Csv\CsvRow($data[0], 1));
+        $stream->writeRow(new \Okneloper\Csv\CsvRow($data[1], 2));
 
         $this->assertEquals($this->dataAsString, file_get_contents($file));
     }

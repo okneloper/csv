@@ -19,7 +19,7 @@ abstract class HandleStream implements OutputStream
      * @param CsvRow $row
      * @return mixed
      */
-    public function write(CsvRow $row)
+    public function writeRow(CsvRow $row)
     {
         // open the stream automatically
         if (!is_resource($this->handle)) {

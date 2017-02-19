@@ -28,7 +28,7 @@ interface OutputStream
      * @param CsvRow $row
      * @return mixed
      */
-    public function write(CsvRow $row);
+    public function writeRow(CsvRow $row);
 
     /**
      * Returns number of lines written
