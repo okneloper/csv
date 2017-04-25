@@ -19,16 +19,23 @@ interface OutputStream
 
     /**
      * Close the stream
-     * @return mixed
+     * @return void
      */
     public function close();
 
     /**
      * Writes a CcvRow into the stream
      * @param CsvRow $row
-     * @return mixed
+     * @return void
      */
     public function writeRow(CsvRow $row);
+
+    /**
+     * Write Arbitrary data
+     * @param $data
+     * @return void
+     */
+    public function write($data);
 
     /**
      * Returns number of lines written

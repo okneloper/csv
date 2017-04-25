@@ -48,6 +48,15 @@ class CsvWriter
         $this->stream->close();
     }
 
+    /**
+     * Writes UTF-8 Byte Order Mark into the stream. This should be written to the file beginning,
+     * so should be done before anything is written
+     */
+    public function writeUtf8Bom()
+    {
+        $this->stream->write("\xEF\xBB\xBF");
+    }
+
     /*
     public function __destruct()
     {

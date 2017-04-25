@@ -17,18 +17,26 @@ abstract class HandleStream implements OutputStream
     /**
      * Writes a CsvRow into the stream
      * @param CsvRow $row
-     * @return mixed
+     * @return void
      */
     public function writeRow(CsvRow $row)
     {
-        // open the stream automatically
-        if (!is_resource($this->handle)) {
-            $this->open();
-            #throw new StreamException("File handle not available. Have you called stream::open()?");
-        }
+        $this->ensureHandleIsOpen();
 
         fputcsv($this->handle, array_values($row->toArray()));
         $this->rowsWritten++;
+    }
+
+    /**
+     * Write Arbitrary data
+     * @param $data
+     * @return void
+     */
+    public function write($data)
+    {
+        $this->ensureHandleIsOpen();
+
+        fwrite($this->handle, $data);
     }
 
     /**
@@ -42,10 +50,19 @@ abstract class HandleStream implements OutputStream
 
     /**
      * Close the stream
-     * @return mixed
+     * @return void
      */
     public function close()
     {
         fclose($this->handle);
+    }
+
+    protected function ensureHandleIsOpen()
+    {
+        // open the stream automatically
+        if (!is_resource($this->handle)) {
+            $this->open();
+            #throw new StreamException("File handle not available. Have you called stream::open()?");
+        }
     }
 }

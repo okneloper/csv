@@ -6,7 +6,7 @@ use Okneloper\Csv\CsvWriter;
 
 class CsvWriterTest extends WritingTest
 {
-    public function testItWrites()
+    public function testItWritesRow()
     {
         $stream = new \Okneloper\Csv\Stream\Output\PhpOutputStream();
         $writer = new CsvWriter($stream);
@@ -23,5 +23,18 @@ class CsvWriterTest extends WritingTest
             $writer->write($row);
         }, $this->dataAsArray);
         */
+    }
+
+    public function testItWritesUtf8Bom()
+    {
+        $stream = new \Okneloper\Csv\Stream\Output\PhpOutputStream();
+
+        $writer = new CsvWriter($stream);
+
+        ob_start();
+        $writer->writeUtf8Bom();
+        $output = ob_get_clean();
+
+        $this->assertEquals("\xEF\xBB\xBF", $output);
     }
 }
