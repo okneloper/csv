@@ -6,7 +6,6 @@ namespace Okneloper\Csv\Stream\Input;
  * Class HandleStream. Reads CSV data from a php file handle using fgetcsv
  *
  * @package Okneloper\Csv\Stream
- * @author Aleksey Lavrinenko
  */
 abstract class HandleStream implements InputStream
 {
@@ -37,6 +36,14 @@ abstract class HandleStream implements InputStream
      * @var int
      */
     public $lineLength = 0;
+
+    /**
+     * @return resource
+     */
+    public function getHandle()
+    {
+        return $this->handle;
+    }
 
     /**
      * @see StreamInterface::nextLine()

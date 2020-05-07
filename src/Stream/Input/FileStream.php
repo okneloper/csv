@@ -2,11 +2,10 @@
 
 namespace Okneloper\Csv\Stream\Input;
 
+use Okneloper\Csv\Stream\StreamException;
+
 /**
  * Class FileStream. Uses a file as source for CSV data.
- *
- * @package Okneloper\Csv\Stream
- * @author Aleksey Lavrinenko
  */
 class FileStream extends HandleStream
 {
@@ -18,12 +17,13 @@ class FileStream extends HandleStream
     public function __construct($filePath)
     {
         if (!file_exists($filePath)) {
-            throw new \Exception("File [$filePath] does not exist");
+            throw new FileNotFoundException("File [$filePath] does not exist");
         }
 
         $this->handle = fopen($filePath, 'r');
+
         if (!$this->handle) {
-            throw new StreamException("Could not  file [$filePath] for reading");
+            throw new StreamException("Could not open file [$filePath] for reading");
         }
     }
 }

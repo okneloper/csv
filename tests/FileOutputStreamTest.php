@@ -4,7 +4,7 @@ require_once __DIR__ . '/WritingTest.php';
 
 use Okneloper\Csv\Stream\Output\FileStream;
 
-class FileStreamTest extends WritingTest
+class FileOutputStreamTest extends WritingTest
 {
     protected $destination_file = "./tests/tmp/new_file.csv";
 

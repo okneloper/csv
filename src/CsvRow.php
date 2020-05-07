@@ -5,7 +5,6 @@ namespace Okneloper\Csv;
 /**
  * Class CsvRow. Represents a row of CSV data
  * @package Okneloper\Csv
- * @author Aleksey Lavrinenko
  */
 class CsvRow implements \ArrayAccess
 {

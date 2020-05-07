@@ -20,14 +20,14 @@ class TempFileStream extends HandleStream
         if (!$this->tempFile) {
             throw new StreamException("Could not create a temporary file");
         }
-
-        $handle = fopen($this->tempFile, 'w');
-
-        parent::__construct($handle);
     }
 
     public function __destruct()
     {
+        if ($this->handle) {
+            $this->close();
+        }
+
         if (file_exists($this->tempFile)) {
             unlink($this->tempFile);
         }
@@ -41,5 +41,10 @@ class TempFileStream extends HandleStream
     public function getFilePath()
     {
         return $this->tempFile;
+    }
+
+    public function open()
+    {
+        $this->handle = fopen($this->tempFile, 'w');
     }
 }

@@ -7,7 +7,6 @@ use Okneloper\Csv\Stream\Input\InputStream;
 /**
  * Class CsvReader. Reads CSV data from provided stream into a CsvRow
  * @package Okneloper\Csv
- * @author Aleksey Lavrinenko
  */
 class CsvReader
 {
