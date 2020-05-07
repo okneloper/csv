@@ -8,14 +8,14 @@ class FileStreamTest extends WritingTest
 {
     protected $destination_file = "./tests/tmp/new_file.csv";
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (file_exists($this->destination_file)) {
             unlink($this->destination_file);
         }
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         if (file_exists($this->destination_file)) {
             unlink($this->destination_file);

@@ -1,6 +1,6 @@
 <?php
 
-abstract class WritingTest extends PHPUnit_Framework_TestCase
+abstract class WritingTest extends \PHPUnit\Framework\TestCase
 {
     protected $dataAsArray =  [
         ['test1', 'test2'],
