@@ -1,6 +1,8 @@
 # csv
-OOP wrapper for PHP's csv functions, with column mapping for easy code support.
+OOP wrapper for PHP's csv functions, with column mapping for easy code maintenance.
 # Easy to use and maintain the code using it
+The code can be easily adopted to changing requirements and input file formats.
+
 Consider CSV data of the world's heaviest animals having position, animal and weight in 1 line as column headings.
 ```php
 <?php

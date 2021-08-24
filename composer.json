@@ -1,7 +1,7 @@
 {
   "name": "okneloper/csv",
   "type": "library",
-  "description": "OOP wrapper for PHP's csv functions, with column mapping for easy code support.",
+  "description": "OOP wrapper for PHP's csv functions, with column mapping for easy code maintenance.",
   "keywords": ["csv","csvreader"],
   "homepage": "https://github.com/okneloper/csv",
   "license": "MIT",
