@@ -42,6 +42,6 @@ class TempFileOutputStreamTest extends TestCase
 
         unset($stream);
 
-        $this->assertFileNotExists($file_path);
+        $this->assertFileDoesNotExist($file_path);
     }
 }
