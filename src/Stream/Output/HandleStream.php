@@ -54,15 +54,26 @@ abstract class HandleStream implements OutputStream
      */
     public function close()
     {
+        if (!$this->isOpen()) {
+            return;
+        }
         fclose($this->handle);
     }
 
     protected function ensureHandleIsOpen()
     {
         // open the stream automatically
-        if (!is_resource($this->handle)) {
+        if (!$this->isOpen()) {
             $this->open();
-            #throw new StreamException("File handle not available. Have you called stream::open()?");
         }
+    }
+
+    /**
+     * Returns true if the stream has a valid resource to write to
+     * @return bool
+     */
+    private function isOpen(): bool
+    {
+        return is_resource($this->handle) && get_resource_type($this->handle) === 'stream';
     }
 }

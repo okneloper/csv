@@ -24,9 +24,7 @@ class TempFileStream extends HandleStream
 
     public function __destruct()
     {
-        if ($this->handle) {
-            $this->close();
-        }
+        $this->close();
 
         if (file_exists($this->tempFile)) {
             unlink($this->tempFile);

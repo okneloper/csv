@@ -42,6 +42,19 @@ class TempFileOutputStreamTest extends TestCase
 
         unset($stream);
 
-        $this->assertFileDoesNotExist($file_path);
+        $this->assertFileNotExists($file_path);
+    }
+
+    public function testOnlyClosesOnce()
+    {
+        $stream = new TempFileStream('tests/tmp');
+        $stream->open();
+
+        // call `close()` twice and expect no error
+        $stream->close();
+        $stream->close();
+
+        // unset and still expect no error
+        unset($stream);
     }
 }
